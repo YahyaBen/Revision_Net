@@ -41,6 +41,23 @@ namespace Revision
             {
                 CB_Etudiants.Items.Add(E.id);
             }
+            foreach (Inscription I in DB.Inscriptions)
+            {
+                CB_Inscription.Items.Add(I.id);
+            }
+        }
+
+        public float Somme(int i)
+        {
+            int A = int.Parse(CB_Inscription.Text);
+            Paiement I = DB.Paiements.Where(x=>x.id_inscription==A).First();
+            return float.Parse(DB.Inscriptions.Sum(y=> y.montant).ToString());
+        }
+        private void CB_Inscription_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int A = int.Parse(CB_Inscription.Text);
+            Lab_Resultat_2.Text = Somme(A).ToString();
+
         }
     }
 }

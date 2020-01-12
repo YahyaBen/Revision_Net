@@ -18,7 +18,8 @@ namespace Revision
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new GestionMatieres());
             //Application.Run(new EtudiantForm());
-            Application.Run(new InscriptionForm());
+            //Application.Run(new InscriptionForm());
+            Application.Run(new AffichageForm());
         }
     }
 }

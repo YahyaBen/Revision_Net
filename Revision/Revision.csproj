@@ -58,6 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AffichageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AffichageForm.Designer.cs">
+      <DependentUpon>AffichageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Enseignant.cs">
       <DependentUpon>ModelEF.tt</DependentUpon>
     </Compile>
@@ -114,6 +120,9 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>ModelEF.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AffichageForm.resx">
+      <DependentUpon>AffichageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EtudiantForm.resx">
       <DependentUpon>EtudiantForm.cs</DependentUpon>
     </EmbeddedResource>

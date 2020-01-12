@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RevisionTpModelStoreContainer" CdmEntityContainer="RevisionTpEntities">
+    <EntitySetMapping Name="Enseignants">
+      <EntityTypeMapping TypeName="RevisionTpModel.Enseignant">
+        <MappingFragment StoreEntitySet="Enseignant">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="cin" ColumnName="cin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Etudiants">
+      <EntityTypeMapping TypeName="RevisionTpModel.Etudiant">
+        <MappingFragment StoreEntitySet="Etudiant">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Inscriptions">
+      <EntityTypeMapping TypeName="RevisionTpModel.Inscription">
+        <MappingFragment StoreEntitySet="Inscription">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="date_debut" ColumnName="date_debut" />
+          <ScalarProperty Name="duree" ColumnName="duree" />
+          <ScalarProperty Name="date_publication" ColumnName="date_publication" />
+          <ScalarProperty Name="montant" ColumnName="montant" />
+          <ScalarProperty Name="id_matiere" ColumnName="id_matiere" />
+          <ScalarProperty Name="id_etudiant" ColumnName="id_etudiant" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Matieres">
+      <EntityTypeMapping TypeName="RevisionTpModel.Matiere">
+        <MappingFragment StoreEntitySet="Matiere">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Paiements">
+      <EntityTypeMapping TypeName="RevisionTpModel.Paiement">
+        <MappingFragment StoreEntitySet="Paiement">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="date_paiment" ColumnName="date_paiment" />
+          <ScalarProperty Name="montant" ColumnName="montant" />
+          <ScalarProperty Name="imprime" ColumnName="imprime" />
+          <ScalarProperty Name="id_inscription" ColumnName="id_inscription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seances">
+      <EntityTypeMapping TypeName="RevisionTpModel.Seance">
+        <MappingFragment StoreEntitySet="Seance">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="date_seance" ColumnName="date_seance" />
+          <ScalarProperty Name="masse" ColumnName="masse" />
+          <ScalarProperty Name="valide" ColumnName="valide" />
+          <ScalarProperty Name="id_enseignant" ColumnName="id_enseignant" />
+          <ScalarProperty Name="id_inscription" ColumnName="id_inscription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="RevisionTpModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

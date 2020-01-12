@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0bd0f3d6adbd434c89617acd75aecd78" Name="Diagram1">
+        <EntityTypeShape EntityType="RevisionTpModel.Enseignant" Width="1.5" PointX="6" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RevisionTpModel.Etudiant" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RevisionTpModel.Inscription" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="RevisionTpModel.Matiere" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RevisionTpModel.Paiement" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RevisionTpModel.Seance" Width="1.5" PointX="8.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RevisionTpModel.sysdiagram" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="RevisionTpModel.FK_Seance_Enseignant" ManuallyRouted="false" />
+        <AssociationConnector Association="RevisionTpModel.FK_Inscription_Etudiant" ManuallyRouted="false" />
+        <AssociationConnector Association="RevisionTpModel.FK_Inscription_Matiere" ManuallyRouted="false" />
+        <AssociationConnector Association="RevisionTpModel.FK_Paiement_Inscription" ManuallyRouted="false" />
+        <AssociationConnector Association="RevisionTpModel.FK_Seance_Inscription" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

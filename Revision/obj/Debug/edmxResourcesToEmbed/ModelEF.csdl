@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RevisionTpModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Enseignant">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tel" Type="Int32" />
+    <Property Name="cin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Seances" Relationship="Self.FK_Seance_Enseignant" FromRole="Enseignant" ToRole="Seance" />
+  </EntityType>
+  <EntityType Name="Etudiant">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Inscriptions" Relationship="Self.FK_Inscription_Etudiant" FromRole="Etudiant" ToRole="Inscription" />
+  </EntityType>
+  <EntityType Name="Inscription">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date_debut" Type="DateTime" Precision="0" />
+    <Property Name="duree" Type="Int32" />
+    <Property Name="date_publication" Type="DateTime" Precision="0" />
+    <Property Name="montant" Type="Double" />
+    <Property Name="id_matiere" Type="Int32" />
+    <Property Name="id_etudiant" Type="Int32" />
+    <NavigationProperty Name="Etudiant" Relationship="Self.FK_Inscription_Etudiant" FromRole="Inscription" ToRole="Etudiant" />
+    <NavigationProperty Name="Matiere" Relationship="Self.FK_Inscription_Matiere" FromRole="Inscription" ToRole="Matiere" />
+    <NavigationProperty Name="Paiements" Relationship="Self.FK_Paiement_Inscription" FromRole="Inscription" ToRole="Paiement" />
+    <NavigationProperty Name="Seances" Relationship="Self.FK_Seance_Inscription" FromRole="Inscription" ToRole="Seance" />
+  </EntityType>
+  <EntityType Name="Matiere">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Inscriptions" Relationship="Self.FK_Inscription_Matiere" FromRole="Matiere" ToRole="Inscription" />
+  </EntityType>
+  <EntityType Name="Paiement">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date_paiment" Type="DateTime" Precision="0" />
+    <Property Name="montant" Type="Double" />
+    <Property Name="imprime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id_inscription" Type="Int32" />
+    <NavigationProperty Name="Inscription" Relationship="Self.FK_Paiement_Inscription" FromRole="Paiement" ToRole="Inscription" />
+  </EntityType>
+  <EntityType Name="Seance">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date_seance" Type="DateTime" Precision="0" />
+    <Property Name="masse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="valide" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id_enseignant" Type="Int32" />
+    <Property Name="id_inscription" Type="Int32" />
+    <NavigationProperty Name="Enseignant" Relationship="Self.FK_Seance_Enseignant" FromRole="Seance" ToRole="Enseignant" />
+    <NavigationProperty Name="Inscription" Relationship="Self.FK_Seance_Inscription" FromRole="Seance" ToRole="Inscription" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Seance_Enseignant">
+    <End Role="Enseignant" Type="Self.Enseignant" Multiplicity="0..1" />
+    <End Role="Seance" Type="Self.Seance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Enseignant">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Seance">
+        <PropertyRef Name="id_enseignant" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inscription_Etudiant">
+    <End Role="Etudiant" Type="Self.Etudiant" Multiplicity="0..1" />
+    <End Role="Inscription" Type="Self.Inscription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Etudiant">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Inscription">
+        <PropertyRef Name="id_etudiant" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inscription_Matiere">
+    <End Role="Matiere" Type="Self.Matiere" Multiplicity="0..1" />
+    <End Role="Inscription" Type="Self.Inscription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Matiere">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Inscription">
+        <PropertyRef Name="id_matiere" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Paiement_Inscription">
+    <End Role="Inscription" Type="Self.Inscription" Multiplicity="0..1" />
+    <End Role="Paiement" Type="Self.Paiement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inscription">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Paiement">
+        <PropertyRef Name="id_inscription" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Seance_Inscription">
+    <End Role="Inscription" Type="Self.Inscription" Multiplicity="0..1" />
+    <End Role="Seance" Type="Self.Seance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inscription">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Seance">
+        <PropertyRef Name="id_inscription" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RevisionTpEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Enseignants" EntityType="Self.Enseignant" />
+    <EntitySet Name="Etudiants" EntityType="Self.Etudiant" />
+    <EntitySet Name="Inscriptions" EntityType="Self.Inscription" />
+    <EntitySet Name="Matieres" EntityType="Self.Matiere" />
+    <EntitySet Name="Paiements" EntityType="Self.Paiement" />
+    <EntitySet Name="Seances" EntityType="Self.Seance" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_Seance_Enseignant" Association="Self.FK_Seance_Enseignant">
+      <End Role="Enseignant" EntitySet="Enseignants" />
+      <End Role="Seance" EntitySet="Seances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inscription_Etudiant" Association="Self.FK_Inscription_Etudiant">
+      <End Role="Etudiant" EntitySet="Etudiants" />
+      <End Role="Inscription" EntitySet="Inscriptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inscription_Matiere" Association="Self.FK_Inscription_Matiere">
+      <End Role="Matiere" EntitySet="Matieres" />
+      <End Role="Inscription" EntitySet="Inscriptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Paiement_Inscription" Association="Self.FK_Paiement_Inscription">
+      <End Role="Inscription" EntitySet="Inscriptions" />
+      <End Role="Paiement" EntitySet="Paiements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Seance_Inscription" Association="Self.FK_Seance_Inscription">
+      <End Role="Inscription" EntitySet="Inscriptions" />
+      <End Role="Seance" EntitySet="Seances" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

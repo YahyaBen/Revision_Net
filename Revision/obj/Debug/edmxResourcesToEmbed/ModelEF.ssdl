@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RevisionTpModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Enseignant">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom" Type="varchar" MaxLength="50" />
+    <Property Name="prenom" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="tel" Type="int" />
+    <Property Name="cin" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Etudiant">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom" Type="varchar" MaxLength="50" />
+    <Property Name="prenom" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="tel" Type="varchar" MaxLength="50" />
+    <Property Name="login" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Inscription">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date_debut" Type="date" />
+    <Property Name="duree" Type="int" />
+    <Property Name="date_publication" Type="date" />
+    <Property Name="montant" Type="float" />
+    <Property Name="id_matiere" Type="int" />
+    <Property Name="id_etudiant" Type="int" />
+  </EntityType>
+  <EntityType Name="Matiere">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="libelle" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Paiement">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date_paiment" Type="date" />
+    <Property Name="montant" Type="float" />
+    <Property Name="imprime" Type="varchar" MaxLength="50" />
+    <Property Name="id_inscription" Type="int" />
+  </EntityType>
+  <EntityType Name="Seance">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date_seance" Type="date" />
+    <Property Name="masse" Type="varchar" MaxLength="50" />
+    <Property Name="valide" Type="varchar" MaxLength="50" />
+    <Property Name="id_enseignant" Type="int" />
+    <Property Name="id_inscription" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Inscription_Etudiant">
+    <End Role="Etudiant" Type="Self.Etudiant" Multiplicity="0..1" />
+    <End Role="Inscription" Type="Self.Inscription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Etudiant">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Inscription">
+        <PropertyRef Name="id_etudiant" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inscription_Matiere">
+    <End Role="Matiere" Type="Self.Matiere" Multiplicity="0..1" />
+    <End Role="Inscription" Type="Self.Inscription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Matiere">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Inscription">
+        <PropertyRef Name="id_matiere" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Paiement_Inscription">
+    <End Role="Inscription" Type="Self.Inscription" Multiplicity="0..1" />
+    <End Role="Paiement" Type="Self.Paiement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inscription">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Paiement">
+        <PropertyRef Name="id_inscription" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Seance_Enseignant">
+    <End Role="Enseignant" Type="Self.Enseignant" Multiplicity="0..1" />
+    <End Role="Seance" Type="Self.Seance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Enseignant">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Seance">
+        <PropertyRef Name="id_enseignant" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Seance_Inscription">
+    <End Role="Inscription" Type="Self.Inscription" Multiplicity="0..1" />
+    <End Role="Seance" Type="Self.Seance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inscription">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Seance">
+        <PropertyRef Name="id_inscription" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RevisionTpModelStoreContainer">
+    <EntitySet Name="Enseignant" EntityType="Self.Enseignant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Etudiant" EntityType="Self.Etudiant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Inscription" EntityType="Self.Inscription" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Matiere" EntityType="Self.Matiere" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Paiement" EntityType="Self.Paiement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Seance" EntityType="Self.Seance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Inscription_Etudiant" Association="Self.FK_Inscription_Etudiant">
+      <End Role="Etudiant" EntitySet="Etudiant" />
+      <End Role="Inscription" EntitySet="Inscription" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inscription_Matiere" Association="Self.FK_Inscription_Matiere">
+      <End Role="Matiere" EntitySet="Matiere" />
+      <End Role="Inscription" EntitySet="Inscription" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Paiement_Inscription" Association="Self.FK_Paiement_Inscription">
+      <End Role="Inscription" EntitySet="Inscription" />
+      <End Role="Paiement" EntitySet="Paiement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Seance_Enseignant" Association="Self.FK_Seance_Enseignant">
+      <End Role="Enseignant" EntitySet="Enseignant" />
+      <End Role="Seance" EntitySet="Seance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Seance_Inscription" Association="Self.FK_Seance_Inscription">
+      <End Role="Inscription" EntitySet="Inscription" />
+      <End Role="Seance" EntitySet="Seance" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

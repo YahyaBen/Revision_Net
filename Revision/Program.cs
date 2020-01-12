@@ -16,7 +16,8 @@ namespace Revision
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GestionMatieres());
+            //Application.Run(new GestionMatieres());
+            Application.Run(new EtudiantForm());
         }
     }
 }

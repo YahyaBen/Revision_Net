@@ -47,7 +47,7 @@
             // 
             // Btn_Matiere_Ajouter
             // 
-            this.Btn_Matiere_Ajouter.Location = new System.Drawing.Point(311, 9);
+            this.Btn_Matiere_Ajouter.Location = new System.Drawing.Point(311, 19);
             this.Btn_Matiere_Ajouter.Name = "Btn_Matiere_Ajouter";
             this.Btn_Matiere_Ajouter.Size = new System.Drawing.Size(75, 23);
             this.Btn_Matiere_Ajouter.TabIndex = 0;
@@ -139,7 +139,7 @@
             // 
             // Txt_Matiere_Libelleaction
             // 
-            this.Txt_Matiere_Libelleaction.Location = new System.Drawing.Point(141, 46);
+            this.Txt_Matiere_Libelleaction.Location = new System.Drawing.Point(115, 46);
             this.Txt_Matiere_Libelleaction.Name = "Txt_Matiere_Libelleaction";
             this.Txt_Matiere_Libelleaction.Size = new System.Drawing.Size(137, 20);
             this.Txt_Matiere_Libelleaction.TabIndex = 5;
@@ -147,7 +147,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(35, 27);
+            this.label3.Location = new System.Drawing.Point(9, 27);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(24, 13);
             this.label3.TabIndex = 6;
@@ -155,7 +155,7 @@
             // 
             // Txt_Matiere_IDaction
             // 
-            this.Txt_Matiere_IDaction.Location = new System.Drawing.Point(141, 20);
+            this.Txt_Matiere_IDaction.Location = new System.Drawing.Point(115, 20);
             this.Txt_Matiere_IDaction.Name = "Txt_Matiere_IDaction";
             this.Txt_Matiere_IDaction.Size = new System.Drawing.Size(137, 20);
             this.Txt_Matiere_IDaction.TabIndex = 7;
@@ -163,7 +163,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(35, 53);
+            this.label4.Location = new System.Drawing.Point(9, 53);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(90, 13);
             this.label4.TabIndex = 8;

@@ -64,6 +64,12 @@
     <Compile Include="Etudiant.cs">
       <DependentUpon>ModelEF.tt</DependentUpon>
     </Compile>
+    <Compile Include="EtudiantForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EtudiantForm.Designer.cs">
+      <DependentUpon>EtudiantForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MatiereForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>ModelEF.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EtudiantForm.resx">
+      <DependentUpon>EtudiantForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MatiereForm.resx">
       <DependentUpon>MatiereForm.cs</DependentUpon>
     </EmbeddedResource>

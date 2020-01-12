@@ -12,3 +12,4 @@ C:\Users\Hyrku\OneDrive\Desktop\.Net\Tp_Revision\Revision\obj\Debug\Revision.csp
 C:\Users\Hyrku\OneDrive\Desktop\.Net\Tp_Revision\Revision\obj\Debug\Revision.csproj.CopyComplete
 C:\Users\Hyrku\OneDrive\Desktop\.Net\Tp_Revision\Revision\obj\Debug\Revision.exe
 C:\Users\Hyrku\OneDrive\Desktop\.Net\Tp_Revision\Revision\obj\Debug\Revision.pdb
+C:\Users\Hyrku\OneDrive\Desktop\.Net\Tp_Revision\Revision\obj\Debug\Revision.EtudiantForm.resources
